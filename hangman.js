@@ -36,6 +36,13 @@ class HangmanGame {
         console.log(`Word: ${displayedWord}`);
     }
 
+    isGameOver() {
+        const isWordGuessed = this.secretWord.split('').every(char => this.guessedLetters.has(char));
+        return isWordGuessed || this.remainingAttempts === 0;
+    }
+
+
+
 
 }
 
