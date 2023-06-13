@@ -41,8 +41,11 @@ class HangmanGame {
         return isWordGuessed || this.remainingAttempts === 0;
     }
 
-
-
+    displayGameState() {
+        const guessedLettersArray = Array.from(this.guessedLetters).join(', ');
+        console.log(`Guessed letters: ${guessedLettersArray} | Remaining attempts: ${this.remainingAttempts}`);
+        return(this.remainingAttempts)
+    }
 
 }
 

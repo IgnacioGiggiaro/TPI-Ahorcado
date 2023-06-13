@@ -38,8 +38,15 @@ test('Check if game is over', () => {
     expect(game2.isGameOver()).toBe(true);
 });
 
-
-
+test('Display current state of the game when remaining Attempts is 4', () => {
+    const game = new HangmanGame('apple');
+    game.start();
+    game.guess('a');
+    game.guess('b');
+    game.guess('j');
+    remainingAttempts=game.displayGameState();
+    expect(remainingAttempts).toBe(4)
+});
 
 
 
