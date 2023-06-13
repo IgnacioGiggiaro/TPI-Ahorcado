@@ -37,6 +37,7 @@ test('Check if game is over(false)', () => {
     game1.guess('p');
     expect(game1.isGameOver()).toBe(false);
 });
+
 test('Check if game is over(true)', () => {
     const game2 = new HangmanGame('apple');
     game2.start();

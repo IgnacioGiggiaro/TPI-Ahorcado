@@ -4,6 +4,7 @@ class HangmanGame {
     constructor(secretWord) {
 
         this.secretWord = secretWord.toLowerCase();
+        this.incorrectLetters=new Set();
         this.guessedLetters = new Set();
         this.remainingAttempts = 6;
     }
@@ -32,7 +33,8 @@ class HangmanGame {
 
         } else {
             this.remainingAttempts--;
-            resp=`Incorrect guess: ${letter}`
+            resp=`Incorrect guess: ${letter}`;
+            this.incorrectLetters.add(lowercaseLetter)
             console.log(resp);
 
         }
@@ -59,8 +61,23 @@ class HangmanGame {
 
     displayGameState() {
         const guessedLettersArray = Array.from(this.guessedLetters).join(', ');
-        console.log(`Guessed letters: ${guessedLettersArray} | Remaining attempts: ${this.remainingAttempts}`);
+        const incorrectLettersArray = Array.from(this.incorrectLetters).join(', ');
+        console.log(`Guessed letters: ${guessedLettersArray} | Remaining attempts: ${this.remainingAttempts} | Incorrect letters: ${incorrectLettersArray}`);
         return(this.remainingAttempts)
+    }
+    playGame() {
+        this.start();
+        while (!this.isGameOver()) {
+            const letter = prompt('Guess a letter:');
+            this.guess(letter);
+            this.displayWord();
+            this.displayGameState();
+        }
+        if (this.remainingAttempts === 0) {
+            console.log('You lost! The word was:', this.secretWord);
+        } else {
+            console.log('Congratulations! You won!');
+        }
     }
 
 }

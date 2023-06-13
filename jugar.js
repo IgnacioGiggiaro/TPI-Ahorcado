@@ -5,4 +5,3 @@ const game = new HangmanGame('apple');
 
 // Llama al método playGame() para iniciar el juego
 game.playGame();
-
