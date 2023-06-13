@@ -48,9 +48,19 @@ test('Display current state of the game when remaining Attempts is 4', () => {
     expect(remainingAttempts).toBe(4)
 });
 
+test('Guess a letter that has already been guessed', () => {
+    const game = new HangmanGame('apple');
+    game.start();
+    game.guess('a');
+    game.guess('a');
+});
 
-
-
+test('Guess an invalid letter', () => {
+    const game = new HangmanGame('apple');
+    game.start();
+    game.guess('a');
+    game.guess('1');
+});
 
 
 

@@ -15,6 +15,14 @@ class HangmanGame {
 
     guess(letter) {
         const lowercaseLetter = letter.toLowerCase();
+        if (!/^[a-z]$/.test(lowercaseLetter)) {
+            console.log(`Invalid input: '${letter}' is not a valid letter!`);
+            return;
+        }
+        if (this.guessedLetters.has(lowercaseLetter)) {
+            console.log(`Letter '${letter}' already guessed!`);
+            return;
+        }
         if (this.secretWord.includes(lowercaseLetter)) {
             this.guessedLetters.add(lowercaseLetter);
             console.log(`Correct guess: ${letter}`);
