@@ -3,13 +3,22 @@ const HangmanGame = require('./hangman');
 
 test('Initialize game and display hidden word', () => {
     const game = new HangmanGame('apple');
-    game.start();
+    hiddenword=game.start();
+    expect(hiddenword).toBe('_____');
 });
 
-test('Guess a letter', () => {
+test('Guess a correct letter', () => {
     const game = new HangmanGame('apple');
     game.start();
-    game.guess('a');
+    resp=game.guess('a');
+    expect(resp).toBe('Correct guess: a');
+});
+
+test('Guess an incorrect letter', () => {
+    const game = new HangmanGame('apple');
+    game.start();
+    resp=game.guess('b');
+    expect(resp).toBe('Incorrect guess: b');
 });
 
 test('Display current state of the word', () => {
@@ -17,16 +26,18 @@ test('Display current state of the word', () => {
     game.start();
     game.guess('a');
     game.guess('l')
-    game.displayWord();
+    displayedword=game.displayWord();
+    expect(displayedword).toBe('a__l_')
 });
 
-test('Check if game is over', () => {
+test('Check if game is over(false)', () => {
     const game1 = new HangmanGame('apple');
     game1.start();
     game1.guess('a');
     game1.guess('p');
     expect(game1.isGameOver()).toBe(false);
-
+});
+test('Check if game is over(true)', () => {
     const game2 = new HangmanGame('apple');
     game2.start();
     game2.guess('b');
@@ -52,14 +63,17 @@ test('Guess a letter that has already been guessed', () => {
     const game = new HangmanGame('apple');
     game.start();
     game.guess('a');
-    game.guess('a');
+    resp=game.guess('a');
+    expect(resp).toBe('Letter already guessed!');
 });
 
 test('Guess an invalid letter', () => {
     const game = new HangmanGame('apple');
     game.start();
     game.guess('a');
-    game.guess('1');
+    resp=game.guess('1');
+    game.guess('a');
+    expect(resp).toBe('Invalid input');
 });
 
 

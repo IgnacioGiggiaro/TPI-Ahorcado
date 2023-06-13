@@ -11,25 +11,32 @@ class HangmanGame {
     start() {
         const hiddenWord = "_".repeat(this.secretWord.length);
         console.log(`Secret word: ${hiddenWord}`);
+        return(hiddenWord);
     }
 
     guess(letter) {
+        let resp='';
         const lowercaseLetter = letter.toLowerCase();
         if (!/^[a-z]$/.test(lowercaseLetter)) {
             console.log(`Invalid input: '${letter}' is not a valid letter!`);
-            return;
+            return('Invalid input');
         }
         if (this.guessedLetters.has(lowercaseLetter)) {
             console.log(`Letter '${letter}' already guessed!`);
-            return;
+            return ('Letter already guessed!');
         }
         if (this.secretWord.includes(lowercaseLetter)) {
             this.guessedLetters.add(lowercaseLetter);
-            console.log(`Correct guess: ${letter}`);
+            resp=`Correct guess: ${letter}`;
+            console.log(resp);
+
         } else {
             this.remainingAttempts--;
-            console.log(`Incorrect guess: ${letter}`);
+            resp=`Incorrect guess: ${letter}`
+            console.log(resp);
+
         }
+        return(resp);
     }
 
     displayWord() {
@@ -42,6 +49,7 @@ class HangmanGame {
             }
         }
         console.log(`Word: ${displayedWord}`);
+        return(displayedWord);
     }
 
     isGameOver() {
