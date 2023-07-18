@@ -1,5 +1,4 @@
 // hangman.js
-const prompt=require("prompt-sync")({sigint:true});
 class HangmanGame {
     constructor(secretWord) {
 
