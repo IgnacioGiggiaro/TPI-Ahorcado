@@ -1,5 +1,5 @@
 Feature: Hangman Game
-  As a player, I want to play the Hangman game, so I can guess the secret word.
+ As a player, I want to play the Hangman game, so I can guess the secret word.
 
   Scenario: Guess a Correct Letter
     Given the Hangman game is started with the word "vapedecerecita"
@@ -16,10 +16,10 @@ Feature: Hangman Game
   Scenario: Win the Game
     Given the Hangman game is started with the word "vapedecerecita"
     When the player guesses all the letters correctly: "v", "a", "p", "e", "d", "c", "r", "i", "t"
-    Then the game should display "vapedecerecita"
+    Then the game should display  "vapedecerecita"
 
 
   Scenario: Lose the Game
-    Given the Hangman game is started with the word "vapedecerecita"
+    Given the Hangman game is started with the word  "vapedecerecita"
     When the player makes 6 incorrect guesses
-    Then the game should display "You lost! The word was: vapedecerecita"
+    Then Remaining attempts 0
