@@ -34,3 +34,5 @@ jobs:
       with:
         name: coverage
         path: coverage/lcov-report
+    - name: Run Acceptance Tests
+      run: npm run acceptance-tests
