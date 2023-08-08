@@ -22,7 +22,7 @@ jobs:
           node-version: '14'  # Puedes cambiar esto a la versión que necesites
         
       - name: Install dependencies
-        run: npm install
+        run: npm install eslint@8.46.0
         
       - name: Run ESLint
         run: npx eslint .
