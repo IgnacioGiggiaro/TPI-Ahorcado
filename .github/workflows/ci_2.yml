@@ -35,4 +35,4 @@ jobs:
         name: coverage
         path: coverage/lcov-report
     - name: Run Acceptance Tests
-      run: npm run acceptance-tests
+      run: npx cucumber-js
