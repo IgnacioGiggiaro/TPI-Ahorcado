@@ -31,7 +31,7 @@ class HangmanGame {
             console.log(resp);
 
         } else {
-            this.remainingAttempts++;
+            this.remainingAttempts--;
             resp=`Incorrect guess: ${letter}`;
             this.incorrectLetters.add(lowercaseLetter)
             console.log(resp);
